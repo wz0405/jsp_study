@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<p>일반적인 문단이다</p>
+<p>문단안에 <span>Span태그</span>있습니다</p>
+<p>아이유 이쁘죠?</p>
+
+<!-- has(t): t태그를 가진 객체만 선택
+contains(s): s문자열을 가진 객체만 선택 -->
+
+<script type="text/javascript">
+  $('p:has(span)').css('background-color','yellow');
+  $('p:contains(아이유)').css('background-color','cyan');
+</script>
+</body>
+</html>

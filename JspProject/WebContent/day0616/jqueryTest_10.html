@@ -24,7 +24,28 @@
 			$('#imgA').attr('src', '../image/4.png');
 		});
 		//button4 event
+		$('#btnd').click(function() {
+			//이미지의 너비, 높이 얻기
+			var w = $('#imgA').attr('width');
+			var h = $('#imgA').attr('height');
+			
+			w = parseInt(w) + 10;
+			h = parseInt(h) + 10;
+			
+			$('#imgA').attr('width',w).attr('height',h);
+		});
+		
 		//button5 event
+		$('#btne').click(function() {
+			//이미지의 너비, 높이 얻기
+			var w = $('#imgA').attr('width');
+			var h = $('#imgA').attr('height');
+			
+			w = parseInt(w) - 10;
+			h = parseInt(h) - 10;
+			
+			$('#imgA').attr('width',w).attr('height',h);
+		});
 	});
 </script>
 
