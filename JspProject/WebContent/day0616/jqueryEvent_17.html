@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../jquery-3.5.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		//버튼1
+		$('#btn1').click(function() {
+
+			$('h2').toggle();
+			$('img').toggle();
+		});
+		//버튼2
+		$('#btn2').click(function() {
+			$('h2').slideToggle(7000);
+			$('img').slideToggle(5000);
+		});
+		//버튼3
+		$('#btn3').click(function() {
+			$('h2').fadeToggle('fast');
+			$('img').fadeToggle('fast');
+		});
+
+	});
+</script>
+</head>
+<body>
+	<button id="btn1" class="btn btn-info">toggle=hide+show</button>
+	<button id="btn2" class="btn btn-info">slidetoggle=slideup+slideDown</button>
+	<button id="btn3" class="btn btn-info">fadetoggle=fadeOut+fadeIn</button>
+	<h2>Toggle이미지</h2>
+	<img alt="" src="../image/k1.png">
+	<img alt="" src="../image/k8.png">
+</body>
+</html>

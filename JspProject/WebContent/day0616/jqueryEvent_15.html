@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../jquery-3.5.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style type="text/css">
+#pannel1, #pannel2, #pannel3, #flip1, #flip2 {
+	padding: 5px;
+	font-size: 18px;
+	text-align: center;
+	background-color: #ffffcc;
+	border-radius: 50px;
+}
+
+#pannel1, #pannel2, #pannel3 {
+	padding: 50px;
+	display: none;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#flip1').click(function() {
+		$('#pannel1').slideDown(7000);
+	});
+	$('#flip2').click(function() {
+		$('#pannel1').slideUp(7000);
+	});
+});
+</script>
+</head>
+<body>
+	<div id="flip1">image open</div>
+	<div align="center">
+		<img id="pannel1" alt="" src="../image/cheese1.png"> <img
+			id="pannel2" alt="" src="../image/cheese2.png"> <img
+			id="pannel3" alt="" src="../image/cheese3.png">
+	</div>
+	<div id="flip2">image close</div>
+</body>
+</html>
