@@ -11,14 +11,15 @@
 
 </head>
 <body>
-	<h2>post방식으로 읽기</h2>
 	<%
-		//한글엔코딩
 	request.setCharacterEncoding("utf-8");
-	String msg = request.getParameter("msg");
+	String name = request.getParameter("name");
+	String pass = request.getParameter("pass");
+	String license = request.getParameter("license");
 	%>
-	<b>입력한 메세지는</b>
-	<br>
-	<font color="blue"><%=msg%>입니다</font>
+	<h3>결과값 출력</h3>
+	이름:<%=name%>
+	비밀번호:<%=pass%>
+	운전면허:<%=license == null ? "없음" : "운전면허있음"%>
 </body>
 </html>

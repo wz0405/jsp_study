@@ -11,13 +11,13 @@
 
 </head>
 <body>
-	<h2>폼단위 전송(post)</h2>
+	<h2>폼단위 전송(post)</h2> <!--암호 -->
 	<form action="myformAction.jsp" method="post">
 		<b>메세지:</b> <input type="text" name="msg" size="20"><br>
 		<input type="submit" value="전송"> <input type="reset"
 			value="초기화">
 	</form>
-	<h2>폼단위로 전송(get)</h2>
+	<h2>폼단위로 전송(get)</h2> <!-- 데이터가 그대로 -->
 	<form action="myformActionGet.jsp" method="get">
 		<b>메세지:</b> <input type="text" name="msg" size="20"><br>
 		<input type="submit" value="전송"> <input type="reset"
