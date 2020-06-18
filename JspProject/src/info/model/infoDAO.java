@@ -142,6 +142,59 @@ public class infoDAO { //명령전송기능
 		return dto;
 		
 	}
+	public void infoUpdate(infoDTO dto) {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		
+		String sql="update info set name=?,addr=? where num=?";
+		
+		conn=getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getAddr());
+			pstmt.setString(3, dto.getNum());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	public void infoDelete(infoDTO dto) {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		String sql = "delete from info where num=?";
+		
+		conn=getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		

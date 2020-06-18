@@ -1,3 +1,5 @@
+<%@page import="info.model.infoDAO"%>
+<%@page import="info.model.infoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +13,14 @@
 
 </head>
 <body>
-
+<% request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
+	
+	infoDTO dto = new infoDTO();
+	dto.setNum(num);
+	infoDAO dao = new infoDAO();
+	dao.infoDelete(dto);
+	response.sendRedirect("InfoList.jsp");
+%>
 </body>
 </html>

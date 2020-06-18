@@ -1,3 +1,5 @@
+<%@page import="info.model.infoDAO"%>
+<%@page import="info.model.infoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +13,23 @@
 
 </head>
 <body>
-
+<%
+	//1.파라메타 값 받기(엔코딩)
+	request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
+	String name = request.getParameter("name");
+	String addr = request.getParameter("addr");
+	
+	//2. 입력데이타를 dto로 묶어서 
+	infoDTO dto = new infoDTO();
+	dto.setNum(num);
+	dto.setName(name);
+	dto.setAddr(addr);
+	//3. 메소드로 전달 
+	infoDAO dao = new infoDAO();
+	dao.infoUpdate(dto);
+	//4. 출력jsp로 이동..url로 바뀜
+	response.sendRedirect("InfoList.jsp");
+	%>
 </body>
 </html>
