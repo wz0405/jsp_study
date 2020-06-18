@@ -29,19 +29,21 @@
 			<th width="150">현재날짜</th>
 			<th>수정/삭제</th>
 		</tr>
-	<%
-	for(int i=0;i<list.size();i++){
-		infoDTO dto = list.get(i);%>
+		<%
+			for (int i = 0; i < list.size(); i++) {
+			infoDTO dto = list.get(i);
+		%>
 		<tr>
-			<td><%=i+1%></td>
+			<td><%=i + 1%></td>
 			<td><%=dto.getName()%></td>
 			<td><%=dto.getAddr()%></td>
 			<td><%=dto.getSdate()%></td>
-			<td><a>수정</a><a>삭제</a></td>
+			<td><a href="InfoUpdateForm.jsp?num=<%=dto.getNum()%>">수정</a> <a
+				href="InfoDeleteAction.jsp?num=<%=dto.getNum()%>">삭제</a></td>
 		</tr>
-	<%
-	}
-	%>
+		<%
+			}
+		%>
 	</table>
 </body>
 </html>

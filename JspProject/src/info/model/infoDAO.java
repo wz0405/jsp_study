@@ -98,13 +98,52 @@ public class infoDAO { //명령전송기능
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
+		} 
+		return list;
+	}
+	////수정하려는 하나의 데이터 찾기
+	public infoDTO getData(String num) {
+		infoDTO dto = new infoDTO();
+		Connection conn = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from info where num=?";
+		
+		conn=getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs=pstmt.executeQuery();
+			
+			//찾으려는 데이터가 하나일때는 while 말고 if
+			if(rs.next()) {
+				dto.setNum(rs.getString("num"));
+				dto.setNum(rs.getString("name"));
+				dto.setNum(rs.getString("addr"));
+				dto.setSdate(rs.getTimestamp("sdate"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
-		return list;
+		return dto;
+		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
 		
 		
 	}
