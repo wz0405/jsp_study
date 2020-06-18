@@ -20,7 +20,7 @@
 	dto.setNum(num);
 	infoDAO dao = new infoDAO();
 	dao.infoDelete(dto);
-	response.sendRedirect("InfoList.jsp");
+	response.sendRedirect("InfoList.jsp"); //list
 %>
 </body>
 </html>
