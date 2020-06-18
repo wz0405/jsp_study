@@ -42,7 +42,7 @@
 				href="InfoDeleteAction.jsp?num=<%=dto.getNum()%>">삭제</a></td>
 		</tr>
 		<%
-			} //수
+			} //수정 
 		%>
 	</table>
 </body>
