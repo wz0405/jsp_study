@@ -1,48 +1,46 @@
-package sinsang.model;
+package myboard.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Vector;
 
 import info.model.infoDTO;
 
-
-public class SinsangDAO {
+public class MyBoradDAO {
 
 	String driver = "com.mysql.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/root";
 
-	public SinsangDAO() {
+	public MyBoradDAO() {
 		try {
 			Class.forName(driver);
-			System.out.println("오라클드라이버 성공");
+			System.out.println("드라이버 연결성공");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println("오라클드라이버 실패");
+			System.out.println("드라이버 연결실");
+			e.printStackTrace();
 		}
 	}
 
-	///////////////////////////// 커넥션
 	public Connection getConnection() {
 		Connection conn = null;
-
 		try {
 			conn = DriverManager.getConnection(url, "root", "1234");
+			System.out.println("db연동 성공");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("커넥션실패");
+			System.out.println("db연동 실패");
+			e.printStackTrace();
 		}
-
 		return conn;
 	}
 
-	public void sinsangInsert(SinsangDTO dto) {
+	public void myBoardInsert(MyBoradDTO dto) {
 
-		String sql = "insert into sinsang values(null,?,?,?,?)";
+		String sql = "insert into myboard values(null,?,?,?,now())";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
@@ -51,9 +49,8 @@ public class SinsangDAO {
 			pstmt = conn.prepareStatement(sql);
 			// ??에 대한 바인딩
 			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getBlood());
-			pstmt.setString(3, dto.getHp());
-			pstmt.setString(4, dto.getBirth());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,73 +65,66 @@ public class SinsangDAO {
 			}
 		}
 	}
-	public Vector<SinsangDTO> getAllData(){
-		Vector<SinsangDTO>list = new Vector<SinsangDTO>();
-		Connection conn=null;
-		Statement stmt=null;
-		ResultSet rs =null;
-		
-		String sql="select * from sinsang order by num asc";
+	public Vector<MyBoradDTO> getAllDatas(){
+		Vector<MyBoradDTO>list = new Vector<MyBoradDTO>();
+		Connection conn =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		String sql="select * from myboard order by num asc";
 		conn=getConnection();
 		try {
-			stmt=conn.createStatement();
-			rs=stmt.executeQuery(sql);
-			
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				SinsangDTO dto = new SinsangDTO();
+				MyBoradDTO dto = new MyBoradDTO();
 				dto.setNum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
-				dto.setBlood(rs.getString("blood"));
-				dto.setHp(rs.getString("hp"));
-				dto.setBirth(rs.getString("birth"));
-				
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setSdate(rs.getTimestamp("sdate"));
 				list.add(dto);
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
 				rs.close();
-				stmt.close();
+				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		return list;
 	}
-	public SinsangDTO getData(String num)
-	{
-		SinsangDTO dto=new SinsangDTO();
-		
+	public MyBoradDTO getData(String num) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		MyBoradDTO dto = new MyBoradDTO();
 		
-		String sql="select * from sinsang where num=?";
-		
+		String sql="select * from myboard where num=?";
 		conn=getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, num);
 			rs=pstmt.executeQuery();
 			
-			if(rs.next())
-			{
+			if(rs.next()) {
+				
 				dto.setNum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
-				dto.setBlood(rs.getString("blood"));
-				dto.setHp(rs.getString("hp"));
-				dto.setBirth(rs.getString("birth"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setSdate(rs.getTimestamp("sdate"));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				rs.close();
 				pstmt.close();
@@ -143,25 +133,51 @@ public class SinsangDAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
-		
-		
 		return dto;
+		
+				
 	}
-	
-
-	public void sinsangDelete(SinsangDTO dto) {
+	public void myBoardUpdate(MyBoradDTO dto) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		String sql = "delete from sinsang where num=?";
+		
+		String sql="update myboard set name=?,subject=?,content=? where num=?";
 		
 		conn=getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getNum());
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getNum());
+			
 			pstmt.executeUpdate();
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	public void myBoardDelete(MyBoradDTO dto) {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		conn=getConnection();
+		String sql= "delete from myboard where num=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getNum());
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,47 +191,9 @@ public class SinsangDAO {
 			}
 		}
 	}
-	public void sinsangUpdate(SinsangDTO dto) {
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		System.out.println("test");
-		String sql="update sinsang set name=?,blood=?,hp=?,birth=? where num=?";
-		
-		
-		conn=getConnection();
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getName());
-			pstmt.setString(2, dto.getBlood());
-			pstmt.setString(3, dto.getHp());
-			pstmt.setString(4, dto.getBirth());
-			pstmt.setString(5, dto.getNum());
-			
-			
-			pstmt.executeUpdate();
-			System.out.println("update 성공");
-			
-		} catch (SQLException e) {
-			
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-	}
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		SinsangDAO dao = new SinsangDAO();
+		MyBoradDAO dao = new MyBoradDAO();
 		dao.getConnection();
-	
 	}
-
 }

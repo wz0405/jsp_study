@@ -76,7 +76,7 @@
 						for (int i = 0; i < strHp.length; i++) {
 							if (hp1.equals(strHp[i])) {
 						%>
-						<option value="<%=strHp[i]%>>"><%=strHp[i]%></option>
+						<option value="<%=strHp[i]%>"><%=strHp[i]%></option>
 						<%
 							}
 						}

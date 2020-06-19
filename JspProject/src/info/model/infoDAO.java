@@ -120,8 +120,8 @@ public class infoDAO { //명령전송기능
 			//찾으려는 데이터가 하나일때는 while 말고 if
 			if(rs.next()) {
 				dto.setNum(rs.getString("num"));
-				dto.setNum(rs.getString("name"));
-				dto.setNum(rs.getString("addr"));
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
 				dto.setSdate(rs.getTimestamp("sdate"));
 			}
 			
