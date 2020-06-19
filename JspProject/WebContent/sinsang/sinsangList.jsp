@@ -40,7 +40,7 @@
 				<td><%=dto.getHp()%></td>
 				<td><%=dto.getBlood() %>형</td>
 				<td><%=dto.getBirth() %></td>
-				<td><a href="">수정</a><a href="">삭제</a>
+				<td><a href="ssUpdateForm.jsp?num=<%=dto.getNum()%>">수정</a>/<a href="ssDeleteForm.jsp?num=<%=dto.getNum()%>">삭제</a>
 				</tr>
 			<%	
 			}

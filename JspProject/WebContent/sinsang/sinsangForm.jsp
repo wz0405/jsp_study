@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="../jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script type="text/javascript">
    function goFocus(hp) {

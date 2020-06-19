@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import info.model.infoDTO;
+
 
 public class SinsangDAO {
 
@@ -104,6 +106,74 @@ public class SinsangDAO {
 			
 		}
 		return list;
+	}
+	public SinsangDTO getData(String num)
+	{
+		SinsangDTO dto=new SinsangDTO();
+		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from sinsang where num=?";
+		
+		conn=getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dto.setNum(rs.getString("num"));
+				dto.setName(rs.getString("name"));
+				dto.setBlood(rs.getString("blood"));
+				dto.setHp(rs.getString("hp"));
+				dto.setBirth(rs.getString("birth"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		return dto;
+	}
+	
+
+	public void sinsangDelete(SinsangDTO dto) {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		String sql = "delete from sinsang where num=?";
+		
+		conn=getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
