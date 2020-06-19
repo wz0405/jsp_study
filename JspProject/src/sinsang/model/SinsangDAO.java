@@ -3,7 +3,10 @@ package sinsang.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
 
 
 public class SinsangDAO {
@@ -63,7 +66,45 @@ public class SinsangDAO {
 			}
 		}
 	}
-
+	public Vector<SinsangDTO> getAllData(){
+		Vector<SinsangDTO>list = new Vector<SinsangDTO>();
+		Connection conn=null;
+		Statement stmt=null;
+		ResultSet rs =null;
+		
+		String sql="select * from sinsang order by num asc";
+		conn=getConnection();
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				SinsangDTO dto = new SinsangDTO();
+				dto.setNum(rs.getString("num"));
+				dto.setName(rs.getString("name"));
+				dto.setBlood(rs.getString("blood"));
+				dto.setHp(rs.getString("hp"));
+				dto.setBirth(rs.getString("birth"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

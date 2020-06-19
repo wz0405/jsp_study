@@ -14,7 +14,7 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 	String name = request.getParameter("name");
 	String blood = request.getParameter("blood");
 	String hp1 = request.getParameter("hp1");
@@ -29,6 +29,8 @@
 	dto.setBirth(birth);
 	SinsangDAO dao = new SinsangDAO();
 	dao.sinsangInsert(dto);
+	
+ 	response.sendRedirect("sinsangList.jsp");
 	%>
 </body>
 </html>
