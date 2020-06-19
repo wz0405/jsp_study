@@ -175,11 +175,47 @@ public class SinsangDAO {
 			}
 		}
 	}
+	public void sinsangUpdate(SinsangDTO dto) {
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		System.out.println("test");
+		String sql="update sinsang set name=?,blood=?,hp=?,birth=? where num=?";
+		
+		
+		conn=getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getBlood());
+			pstmt.setString(3, dto.getHp());
+			pstmt.setString(4, dto.getBirth());
+			pstmt.setString(5, dto.getNum());
+			System.out.println(dto.getNum());
+			
+			pstmt.executeUpdate();
+			System.out.println("update 성공");
+			
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		SinsangDAO dao = new SinsangDAO();
 		dao.getConnection();
+	
 	}
 
 }
