@@ -30,7 +30,7 @@ h1 {letter-spacing: 6px}
     </div>
   </div>
 </header>
-
+<!-- image file ++ -->
 <!-- Photo Grid -->
 <div class="w3-row-padding w3-grayscale" align="center" style="margin-bottom:128px">
   <div class="w3-half">
