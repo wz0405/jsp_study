@@ -16,7 +16,7 @@ String path = request.getContextPath();
 %>
 <body>
 <a href="<%=path%>/">Home</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=path%>/">Login</a>&nbsp;&nbsp;&nbsp;
+<a href="<%=path%>/index.jsp?body=login/loginForm.jsp">Login</a>&nbsp;&nbsp;&nbsp;
 <a href="<%=path%>/index.jsp?body=member/memberForm.jsp">SignIn</a>&nbsp;&nbsp;&nbsp;
 <a href="<%=path%>/index.jsp?body=member/memberList.jsp">GuestBook</a>&nbsp;&nbsp;&nbsp;
 <a href="<%=path%>/">Board</a>&nbsp;&nbsp;&nbsp;

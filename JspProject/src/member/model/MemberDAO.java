@@ -239,4 +239,85 @@ public class MemberDAO {
 			}
 		}
 	}
+	public String getName(String id){
+		String name="";
+		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where id=?";
+		
+		conn=db.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				name=rs.getString("name");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return name;
+	}
+	public boolean isLogin(String id,String pass)
+	{
+		boolean flag=false;
+		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where id=? and pass=?";
+		
+		
+		conn=db.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			
+			rs=pstmt.executeQuery();
+			
+			//비밀번호가 맞는 데이터가 있으면 true
+			if(rs.next())
+				flag=true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+				
+		return flag;
+	}
+
+	
+
+
 }
