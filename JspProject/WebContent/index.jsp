@@ -34,7 +34,7 @@ if (request.getParameter("body") != null) {
 
 	</div>
 	<!-- bottom -->
-	<div style="position: absolute; left: 200px; top: 800px; width: 600px; height: 100px;">
+	<div style="position: absolute; left: 200px; top: 1200px; width: 600px; height: 100px;">
 		<jsp:include page="layout/bottom.jsp" />
 	</div>
 </body>

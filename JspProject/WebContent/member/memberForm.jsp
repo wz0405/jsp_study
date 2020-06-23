@@ -9,7 +9,22 @@
 <script type="text/javascript">
 	function idopen() {
 		window.open('member/IdSearchForm.jsp', 'w',
-				'width=500px,height=500px,left=500px,top=100px');
+				'width=400px,height=400px,left=500px,top=100px');
+	}
+	function check(f) {
+		//입력체크
+		if(f.id.value.length==0){
+			alert("아이디입력 버튼을 눌러주새요.");
+			return false;
+		}
+		//2개의 비밀번호가 같은지 확인하기
+		if(f.pass.value!=f.pass2.value){
+			alert("비밀번호가 다릅니다.");
+			f.pass.value='';
+			f.pass2.value='';
+			f.pass.focus();
+			return false;
+		}
 	}
 </script>
 </head>
@@ -18,7 +33,7 @@
 String path = request.getContextPath();
 %>
 <body>
-	<form action="<%=path%>/member/memberAction.jsp" method="post" name="frm">
+	<form action="<%=path%>/member/memberAction.jsp" method="post" name="frm" onsubmit="return check(this)">
 		<table class="table table-bodered" style="width: 500px;">
 			<caption>SignIn</caption>
 			<tr>

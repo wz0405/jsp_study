@@ -21,6 +21,12 @@
 			return false;
 		}
 	}
+	function goUse(id) {
+		//전달받은 아이디를 오픈한 윈도우로 보내고 
+		opener.frm.id.value = id;
+		//현재 윈도우는 닫는다.
+		window.close();
+	}
 </script>
 </head>
 <%
@@ -32,7 +38,7 @@ String key = request.getParameter("key");
 if (key == null) {
 %>
 <!-- 아이디 입력폼 -->
-<form action="<%=path%>/member/IdSearchForm.jsp" method="post" onsubmit="check(this)">
+<form action="<%=path%>/member/IdSearchForm.jsp" method="post" onsubmit="return check(this)">
 	<table>
 		<tr>
 			<td>
@@ -78,7 +84,7 @@ if (key == null) {
 			<b style="color: blue;">
 				<br>사용가능한 아이디 입니다.<br>
 			</b>
-			<input type="button" value="사용하기" onclick="">
+			<input type="button" value="사용하기" onclick="goUse('<%=id%>')">
 			<input type="button" value="insert id" onclick="location.href='<%=path%>/member/IdSearchForm.jsp'">
 		</td>
 	</tr>

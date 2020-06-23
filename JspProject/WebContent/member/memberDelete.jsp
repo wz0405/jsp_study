@@ -1,3 +1,5 @@
+<%@page import="member.model.MemberDAO"%>
+<%@page import="member.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,11 +17,14 @@
 String path = request.getContextPath();
 %>
 <body>
-<a href="<%=path%>/">Home</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=path%>/">Login</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=path%>/index.jsp?body=member/memberForm.jsp">SignIn</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=path%>/index.jsp?body=member/memberList.jsp">GuestBook</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=path%>/">Board</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=path%>/">Notice</a>&nbsp;&nbsp;&nbsp;
+<% request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
+	
+	MemberDTO dto = new MemberDTO();
+	dto.setNum(num);
+	MemberDAO dao = new MemberDAO();
+	dao.memberDelete(dto);
+	response.sendRedirect(path+"/index.jsp?body=member/memberList.jsp"); //list
+%>
 </body>
 </html>
