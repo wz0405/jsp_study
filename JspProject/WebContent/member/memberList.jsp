@@ -19,9 +19,9 @@ String path = request.getContextPath();
 <body>
 	<%MemberDAO dao = new MemberDAO();
 Vector<MemberDTO> list = dao.getAlldata();
-SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH");
+SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
 %>
-	<div style="position: absolute; right: 1050px; bottom: 800px; width: 700px; height: 250px;">
+	<div style="width:500px;">
 	<b style="color:cyan">총<%=list.size() %>명의 회원이 있습니다.</b>
 		<table class="table table-striped">
 			<caption>회원 명단</caption>
