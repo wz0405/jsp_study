@@ -16,6 +16,7 @@
 String loginok = (String) session.getAttribute("loginok");
 %>
 <body>
+
 	<%
 		if (loginok != null) {
 	%>

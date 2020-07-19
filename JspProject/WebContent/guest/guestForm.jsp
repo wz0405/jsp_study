@@ -23,7 +23,10 @@
 		<table class="table table-bordered" style="width: 400px;">
 			<tr>
 				<td>
-					작성자:<b><%=name%>(<%=id%>)</b><br> <br>
+					작성자:
+					<b><%=name%>(<%=id%>)
+					</b>
+					<br> <br>
 					<textarea rows="5" cols="40" name="content" autofocus="autofocus" style="border: 2px dotted pink;"></textarea>
 				</td>
 				<td valign="middle" align="center">
@@ -49,7 +52,7 @@
 					<%
 						for (int i = 1; i <= 8; i++) {
 					%>
-						<img alt="" src="<%=path%>/avata/b<%=i%>.png" style="width:30px;">
+					<img alt="" src="<%=path%>/avata/b<%=i%>.png" style="width: 30px;">
 
 					<%
 						}
