@@ -1,46 +1,50 @@
 @charset "utf-8";
 body {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-li{
-	list-style: none;
+li {
+    list-style: none;
 }
 
-body,html{
-	height: 100%;
-	overflow: hidden;
+body, html {
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
-	background: url("../image/c1.jpg");
+    background: url("../image/c1.jpg");
 }
 
-#sunban_wrapper{
-	width: 780px; margin: 50px auto;
+#sunban_wrapper {
+    width: 780px;
+    margin: 50px auto;
 }
 
-#control_wrapper{
-	width: 300px;
-	height: 420px;
-	position: fixed;
-	left: 0;
-	bottom: 0;
+#control_wrapper {
+    width: 300px;
+    height: 420px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
-.sunban{
-	height: 150px;
-	margin-bottom: 50px;
-	width: 800px;
-	background: url("../image/dog1.jpg") no-repeat center bottom;
+.sunban {
+    height: 150px;
+    margin-bottom: 50px;
+    width: 800px;
+    background: url("../image/dog1.jpg") no-repeat center bottom;
 }
 
-.sunban li{
-	float: left; width: 120px; height: 120px; cursor: pointer;
-	
+.sunban li {
+    float: left;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+
 }
 
-.money li{
-	cursor: pointer;
+.money li {
+    cursor: pointer;
 }

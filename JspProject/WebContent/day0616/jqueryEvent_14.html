@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="../jquery-3.5.1.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#btn1').click(function() {
-			$('#diva').fadeIn();
-			$('#divb').fadeIn('slow');
-			$('#divc').fadeIn(10);
-		});
-	});
-</script>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="../jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn1').click(function () {
+                $('#diva').fadeIn();
+                $('#divb').fadeIn('slow');
+                $('#divc').fadeIn(10);
+            });
+        });
+    </script>
 </head>
 <body>
-	<button id="btn1" class="btn btn-info">이버튼을 누르면 fade된 박스가
-		나옵니다.</button>
-	<div id="diva"
-		style="width: 80px; height: 80px; display: none; background-color: red;"></div>
-	<br>
-	<div id="divb"
-		style="width: 80px; height: 80px; display: none; background-color: yellow;"></div>
-	<br>
-	<div id="divc"
-		style="width: 80px; height: 80px; display: none; background-color: cyan;"></div>
-	<br>
+<button id="btn1" class="btn btn-info">이버튼을 누르면 fade된 박스가
+    나옵니다.
+</button>
+<div id="diva"
+     style="width: 80px; height: 80px; display: none; background-color: red;"></div>
+<br>
+<div id="divb"
+     style="width: 80px; height: 80px; display: none; background-color: yellow;"></div>
+<br>
+<div id="divc"
+     style="width: 80px; height: 80px; display: none; background-color: cyan;"></div>
+<br>
 </body>
 </html>

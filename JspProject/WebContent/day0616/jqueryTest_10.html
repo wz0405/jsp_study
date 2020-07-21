@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="../jquery-3.5.1.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<script type="text/javascript">
-	$(function() {
-		//button1 event
-		$('#btna').click(function() {
-			alert("이미지1")
-			$('#imgA').attr('src', '../image/2.png');
-		});
-		//button2 event
-		$('#btnb').click(function() {
-			alert("이미지2")
-			$('#imgA').attr('src', '../image/3.png');
-		});
-		//button3 event
-		$('#btnc').click(function() {
-			alert("이미지3")
-			$('#imgA').attr('src', '../image/4.png');
-		});
-		//button4 event
-		$('#btnd').click(function() {
-			//이미지의 너비, 높이 얻기
-			var w = $('#imgA').attr('width');
-			var h = $('#imgA').attr('height');
-			
-			w = parseInt(w) + 10;
-			h = parseInt(h) + 10;
-			
-			$('#imgA').attr('width',w).attr('height',h);
-		});
-		
-		//button5 event
-		$('#btne').click(function() {
-			//이미지의 너비, 높이 얻기
-			var w = $('#imgA').attr('width');
-			var h = $('#imgA').attr('height');
-			
-			w = parseInt(w) - 10;
-			h = parseInt(h) - 10;
-			
-			$('#imgA').attr('width',w).attr('height',h);
-		});
-	});
-</script>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="../jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script type="text/javascript">
+        $(function () {
+            //button1 event
+            $('#btna').click(function () {
+                alert("이미지1")
+                $('#imgA').attr('src', '../image/2.png');
+            });
+            //button2 event
+            $('#btnb').click(function () {
+                alert("이미지2")
+                $('#imgA').attr('src', '../image/3.png');
+            });
+            //button3 event
+            $('#btnc').click(function () {
+                alert("이미지3")
+                $('#imgA').attr('src', '../image/4.png');
+            });
+            //button4 event
+            $('#btnd').click(function () {
+                //이미지의 너비, 높이 얻기
+                var w = $('#imgA').attr('width');
+                var h = $('#imgA').attr('height');
+
+                w = parseInt(w) + 10;
+                h = parseInt(h) + 10;
+
+                $('#imgA').attr('width', w).attr('height', h);
+            });
+
+            //button5 event
+            $('#btne').click(function () {
+                //이미지의 너비, 높이 얻기
+                var w = $('#imgA').attr('width');
+                var h = $('#imgA').attr('height');
+
+                w = parseInt(w) - 10;
+                h = parseInt(h) - 10;
+
+                $('#imgA').attr('width', w).attr('height', h);
+            });
+        });
+    </script>
 
 
 </head>
 <body>
-	<img src="../image/1.png" id="imgA" border="1" width="200" height="250">
+<img src="../image/1.png" id="imgA" border="1" width="200" height="250">
 
-	<br>
-	<br>
-	<button id="btna" class="btn btn-success">이미지1</button>
-	<button id="btnb" class="btn btn-success">이미지2</button>
-	<button id="btnc" class="btn btn-success">이미지3</button>
-	<button id="btnd" class="btn btn-success">점점크게</button>
-	<button id="btne" class="btn btn-success">점점작게</button>
+<br>
+<br>
+<button id="btna" class="btn btn-success">이미지1</button>
+<button id="btnb" class="btn btn-success">이미지2</button>
+<button id="btnc" class="btn btn-success">이미지3</button>
+<button id="btnd" class="btn btn-success">점점크게</button>
+<button id="btne" class="btn btn-success">점점작게</button>
 </body>
 </html>

@@ -15,59 +15,62 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/hs")
 public class HelloServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public HelloServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public HelloServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+        PrintWriter out = response.getWriter();
 
-		out.print("<html>");
-		out.print("<head>");
-		out.print("</head>");
-		out.print("<body>");
-		out.print("Hello Servlet~");
-		out.print("</body>");
-		out.print("</html>");
+        out.print("<html>");
+        out.print("<head>");
+        out.print("</head>");
+        out.print("<body>");
+        out.print("Hello Servlet~");
+        out.print("</body>");
+        out.print("</html>");
 
-	}
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		System.out.println("init");
-	}
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		System.out.println("distroy");
-	}
-	@PostConstruct
-	private void fun() {
-		// TODO Auto-generated method stub
-		System.out.println("first");
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
+
+    @Override
+    public void init() throws ServletException {
+        // TODO Auto-generated method stub
+        System.out.println("init");
+    }
+
+    @Override
+    public void destroy() {
+        // TODO Auto-generated method stub
+        System.out.println("distroy");
+    }
+
+    @PostConstruct
+    private void fun() {
+        // TODO Auto-generated method stub
+        System.out.println("first");
+    }
 
 }
